@@ -9,7 +9,7 @@ The Health and Retirement Study is a longitudinal project sponsored by the Natio
 The final dataset required to run the code is an R data file, titled 'hearing_data_subset', which can be found under ‘data’. 
 
 Hearing level is quantified in HRS by asking respondents to self-report their quality of hearing on a five-point scale: Excellent (1), Very Good (2), Good (3), Fair (4), and Poor (5), where a rating of 4 or 5 constitutes hearing impairment. HRS also asks respondents if they ever wear a hearing aid.  
-Depression scores are quantified using the Center for Epidemiologic Studies Depression (CES-D) scale, which is computed using the answers to eight questions from the Cognition section of HRS. Mean-item imputation was used to replace any missing values from each of the 8 items. 
+Depression scores are quantified using the Center for Epidemiologic Studies Depression (CES-D) scale, which is computed using the answers to eight questions from the Cognition section of HRS. Mean-item imputation was used to replace any missing values from each of the 8 items. The maximum score is 8, and the minimum score is 0. The higher the score, the greater the amount of depression.  
 
 The first part of the analysis focused on the association between depression and hearing quality of any individual not suffering from hearing loss, while the second part of the analysis focused on the effects, if any, of wearing hearing aids on depression levels.
 
