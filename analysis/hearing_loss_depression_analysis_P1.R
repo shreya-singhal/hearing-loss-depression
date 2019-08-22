@@ -84,12 +84,13 @@ hearing_prob_CESD_table <- group_by(Q1_data, hearing_prob_04) %>%
     mean = mean(CESD_04),
     sd = sd(CESD_04)
   )
+hearing_prob_CESD_table$hearing_prob_04 <- c("No", "Yes")
 
-#CES-D Scores per hearing impairment or not
-hearing_prob_CESD_table %>% kable(col.names = c("", "count", "mean", "sd"),
-                                  caption = "Hearing Impairment (2004)") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F)
+#CES-D Scores per hearing impairment or not:
 
+hearing_prob_CESD_table %>% kable(col.names = c("", "count", "Mean CES-D", "SD CES-D"), caption = "Hearing Impairment (2004)") %>% kable_styling(bootstrap_options = "striped", font = 13) %>% 
+  column_spec(1, bold = T) %>%
+  row_spec(0, background = "lightblue", color = "black")
 
 # Boxplot to show distribution of 2004 CES-D scores for hearing impairment or not:
 
