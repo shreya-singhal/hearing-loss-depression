@@ -15,4 +15,6 @@ The first part of the analysis focused on the association between depression and
 
 Due to the longitudinal nature of HRS data, a cohort difference-in-differences design was used to answer the second part; the treatment group comprised of individuals who did not wear a hearing aid in the first wave, began wearing a hearing aid in the second wave, and continued to do so for the third wave, while the control group was made up of individuals who suffered from hearing loss but did not wear a hearing aid in any of the three waves. Since this was a cohort study, it was important that individuals were survey respondents in ALL three waves (some participants were lost to follow up throughout the years). 
 
-The code required to run the analysis for the first part is 'hearing_depression_P1.R', and the code required to run the analysis for the second part is 'hearing_depression_P2.R', both of which can be found in 'analysis'. 
+The R code required to run the analysis for the first part is 'hearing_depression_P1.R', and the code required to run the analysis for the second part is 'hearing_depression_P2.R', both of which can be found in 'analysis'. R packages that were frequently used include dplyr, ggplot2, and kableExtra. 
+
+Preliminary results can be found under 'results'. 
