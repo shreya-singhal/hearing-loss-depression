@@ -75,7 +75,7 @@ kruskal.test(CESD_04 ~ hearing_04, data = Q1_data)
 # Use Pairwise Wilcoxon Rank Sum test to determine which pairs are significant:
 pairwise.wilcox.test(Q1_data$CESD_04, Q1_data$hearing_04, p.adjust.method = "BH")
 
-##############################################################
+######################################### Hearing impairment
 
 # A score of 4 or 5 implies hearing impairment. 
 
