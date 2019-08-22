@@ -8,7 +8,7 @@ library(knitr)
 library(apaTables)
 library(car)
 
-load("C:/Users/ss12293/Box Sync/Hearing Depression Project/hearing_data_subset.Rdata") #change to working directory
+load("C:/Users/ss12293/Box Sync/Hearing Depression Project/hearing_data_subset.Rdata") # change to working directory
 
 # The 2004 wave of HRS data will be used, as the sample size for this year is largest. 
 
@@ -36,10 +36,10 @@ Q1_data$hearing_04 <- as.factor(Q1_data$hearing_04)
 levels(Q1_data$hearing_04) <- c("1" = "Excellent", "2" = "Very Good", "3" = "Good", "4" = "Fair", "5" = "Poor")
 
 
-#Race (a covariate) is changed to a categorical variable. 
+# Race (a covariate) is changed to a categorical variable. 
 Q1_data$race <- as.factor(Q1_data$race)
 
-#Cognitive Impairment (another covariate) (Yes/No)
+# Cognitive Impairment (another covariate) (Yes/No)
 Q1_data$cogImp_04 <- NA
 Q1_data$cogImp_04[Q1_data$cog_function_04 == 1] <- 0 #No 
 Q1_data$cogImp_04[Q1_data$cog_function_04 == 2 | Q1_data$cog_function_04 == 3] <- 1 #Yes 
@@ -55,9 +55,8 @@ hearing_level_CESD_table <- group_by(Q1_data, hearing_04) %>%
     mean = mean(CESD_04),
     sd = sd(CESD_04)
   )
-
-hearing_level_CESD_table %>% kable(col.names = c("", "count", "CESD:mean", "CESD:sd"), caption = "Hearing Distribution (2004)") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F)
+hearing_level_CESD_table %>% kable(col.names = c("", "count", "Mean CES-D", "SD CES-D"), caption = "Hearing Distribution (2004)") %>% kable_styling(bootstrap_options = "striped", font = 13) %>% column_spec(1, bold = T) %>%
+  row_spec(0, background = "thistle", color = "black")
 
 # Boxplot to show distribution of CES-D scores for each hearing rating
 ggplot(Q1_data, aes(x=as.factor(hearing_04), y=CESD_04, fill = as.factor(hearing_04))) + 
@@ -72,13 +71,13 @@ leveneTest(CESD_04 ~ hearing_04, data = Q1_data) #variances not equal, therefore
 # Use Kruskal Test instead of ANOVA:
 kruskal.test(CESD_04 ~ hearing_04, data = Q1_data)
 
-# Use Pairwise Wilcoxon Rank Sum test to determine which pairs are significant:
+# Use Pairwise Wilcoxon Rank Sum test (with BH adjustment method) to determine which pairs are significant:
 pairwise.wilcox.test(Q1_data$CESD_04, Q1_data$hearing_04, p.adjust.method = "BH")
 
 ######################################### Hearing impairment
 
 # A score of 4 or 5 implies hearing impairment. 
-
+ 
 hearing_prob_CESD_table <- group_by(Q1_data, hearing_prob_04) %>%
   summarise(
     count = n(),
@@ -104,7 +103,7 @@ t.test(CESD_04 ~ hearing_prob_04, data = Q1_data, var.equal = FALSE, alternative
 
 ######################################### Addition of Covariates
 
-#Select covariates: age, sex, race, ethnicity, cognitive impairment, stroke, smoking status, hypertension, diabetes
+# Select covariates: age, sex, race, ethnicity, cognitive impairment, stroke, smoking status, hypertension, diabetes
 
 Q1_data_subset <- Q1_data %>% dplyr::select(HHID, PN, hearing_04, age_04, gender, race, hispanic,
                                 cogImp_04, STROKE_04, smoke_04, HTN_04, DIABETES_04, CESD_04)
@@ -117,4 +116,5 @@ Q1_complete_cases <- Q1_data_subset[complete.cases(Q1_data_subset), ]
 
 model_q1 <- lm(CESD_04 ~ hearing_04 + age_04 + gender + race + hispanic + cogImp_04 +
              smoke_04, data = Q1_complete_cases)
-apa.reg.table(model_q1, filename = "q1_model.doc")
+
+apa.reg.table(model_q1, filename = "P1_model.doc")
