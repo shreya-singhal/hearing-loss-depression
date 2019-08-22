@@ -4,7 +4,7 @@
 A medical student from NYU was interested in determining the effects of quality of hearing on depression levels among the geriatric population, as well as the long-term benefits of hearing aids on depression levels among those experiencing hearing impairment, for prior research shows signs of a relationship between the two. I was given the task of doing the statistical analyses required to answer this question. 
 All of the data used for this analysis originates from the Health & Retirement Study (HRS), which can be downloaded via https://ssl.isr.umich.edu/hrs/files2.php (registration is required). 
 
-The Health and Retirement Study is a longitudinal project sponsored by the National Institute on Aging which, every two years, surveys a representative sample of approximately 20,000 people of age 50 and over in the US. Questions asked provide information on characteristics such as Demographics, Physical Health, Cognition, and Income & Assets.
+The Health and Retirement Study is a longitudinal project sponsored by the National Institute on Aging which, every two years, surveys a representative sample of approximately 20,000 people of age 50 and over in the US. Questions asked provide information on characteristics such as Demographics, Physical Health, Cognition, and Income & Assets. Each respondent is identified by a unique ID, which is kept the same over the years. 
 
 The final dataset required to run the code is an R data file, titled 'hearing_data_subset', which can be found under ‘data’. 
 
